@@ -7,7 +7,7 @@ class AddAdoptionForm extends Component {
             dogName : "",
             dogAge : 0,
             dogBreed : "",
-            dogTraining : "",
+            dogTraining : false,
             dogColor : "",
         }
     }
@@ -20,7 +20,8 @@ class AddAdoptionForm extends Component {
         } else if(event.target.name === "dogBreed") {
             this.setState({dogBreed : event.target.value})
         } else if(event.target.name === "dogTraining") {
-            this.setState({dogTraining : event.target.value})
+            this.setState({dogTraining : true})
+            console.log(event.target)
         } else if(event.target.name === "dogColor") {
             this.setState({dogColor : event.target.value})
         }
@@ -28,6 +29,13 @@ class AddAdoptionForm extends Component {
 
     handleSubmission = (event) => {
         event.preventDefault();
+        this.setState({
+            dogName : "",
+            dogAge : 0,
+            dogBreed : "",
+            dogTraining : false,
+            dogColor : "",
+        })
         this.props.updateDogArray(this.state);
     }
 
@@ -55,12 +63,8 @@ class AddAdoptionForm extends Component {
 
                         <div className="formGroup">
                             <p>Is your dog potty trained?</p>
-                            <label htmlFor="dogTrainingYes">Yes : </label>
-                            <input type="radio" id="dogTrainingYes" name="dogTraining" />
-                            <label htmlFor="dogTrainingSomeWhat">Somewhat : </label>
-                            <input type="radio" id="dogTrainingSomeWhat" name="dogTraining" />
-                            <label htmlFor="dogTrainingNo">No : </label>
-                            <input type="radio" id="dogTrainingNo" name="dogTraining" />
+                            <label htmlFor="dogTraining">Yes : </label>
+                            <input type="checkbox" id="dogTraining" name="dogTraining" value = {this.state.dogTraining} onChange = {this.handleChange}/>
                         </div>
 
                         <div className="formGroup">

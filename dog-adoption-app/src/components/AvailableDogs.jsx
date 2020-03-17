@@ -13,7 +13,7 @@ class AvailableDogs extends Component{
                                 <p>Dog Name : {dog.dogName}</p>
                                 <p>Dog Age : {dog.dogAge}</p>
                                 <p>Dog Breed : {dog.dogBreed}</p>
-                                <p>Dog Training : {dog.dogTraining}</p>
+                                <p>Dog Training : {dog.dogTraining ? "Yes" : "No"}</p>
                                 <p>Dog Color : {dog.dogColor}</p>
                             </div>
                         )
