@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class AddAdoptionForm extends Component {
     constructor(props) {
         super(props);
+        // set initial state
         this.state = {
             dogName : "",
             dogAge : 0,
@@ -12,6 +13,7 @@ class AddAdoptionForm extends Component {
         }
     }
 
+    // one event handler to conditionally update state
     handleChange = (event) => {
         if(event.target.name === "dogName"){
             this.setState({dogName : event.target.value})
@@ -20,7 +22,7 @@ class AddAdoptionForm extends Component {
         } else if(event.target.name === "dogBreed") {
             this.setState({dogBreed : event.target.value})
         } else if(event.target.name === "dogTraining") {
-            this.setState({dogTraining : true})
+            this.setState({dogTraining : !this.state.dogTraining}) // toggle check setting opposite of current value in state
             console.log(event.target)
         } else if(event.target.name === "dogColor") {
             this.setState({dogColor : event.target.value})
@@ -28,7 +30,8 @@ class AddAdoptionForm extends Component {
     }
 
     handleSubmission = (event) => {
-        event.preventDefault();
+        event.preventDefault(); // keep page from reloading
+        // set state to initial values
         this.setState({
             dogName : "",
             dogAge : 0,
@@ -36,9 +39,11 @@ class AddAdoptionForm extends Component {
             dogTraining : false,
             dogColor : "",
         })
+        // pass state to callback function
         this.props.updateDogArray(this.state);
     }
 
+    // render form
     render() {
         return (
             <div>
@@ -64,7 +69,7 @@ class AddAdoptionForm extends Component {
                         <div className="formGroup">
                             <p>Is your dog potty trained?</p>
                             <label htmlFor="dogTraining">Yes : </label>
-                            <input type="checkbox" id="dogTraining" name="dogTraining" value = {this.state.dogTraining} onChange = {this.handleChange}/>
+                            <input type="checkbox" id="dogTraining" name="dogTraining" checked = {this.state.dogTraining} onChange = {this.handleChange}/>
                         </div>
 
                         <div className="formGroup">

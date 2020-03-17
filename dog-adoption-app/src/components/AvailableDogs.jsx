@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 
 class AvailableDogs extends Component{
-
+    // iterate through passed array and render each property of the element as a p tag
+    // Extra logic for check box (dog training)
     render(){
         return(
             <div>
